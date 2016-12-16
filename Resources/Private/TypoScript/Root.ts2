@@ -1,0 +1,3 @@
+prototype(ByTorsten.NeosPluginBase:Plugin) < prototype(TYPO3.Neos:Plugin) {
+  @class = 'ByTorsten\\NeosPluginBase\\TypoScriptObjects\\PluginImplementation'
+}
