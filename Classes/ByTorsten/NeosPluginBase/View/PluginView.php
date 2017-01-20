@@ -1,30 +1,30 @@
 <?php
 namespace ByTorsten\NeosPluginBase\View;
 
-use ByTorsten\NeosPluginBase\TypoScriptObjects\PluginImplementation;
-use TYPO3\Fluid\View\TemplateView;
+use ByTorsten\NeosPluginBase\Fusion\PluginImplementation;
+use Neos\FluidAdaptor\View\TemplateView;
 
 class PluginView extends TemplateView {
 
     /**
      * @var PluginImplementation
      */
-    protected $typoScriptObject;
+    protected $fusionObject;
 
     /**
      * @return PluginImplementation
      */
-    public function getTypoScriptObject()
+    public function getFusionObject()
     {
-        return $this->typoScriptObject;
+        return $this->fusionObject;
     }
 
     /**
-     * @param PluginImplementation $typoScriptObject
+     * @param PluginImplementation $fusionObject
      * @return void
      */
-    public function setTypoScriptObject($typoScriptObject)
+    public function setFusionObject($fusionObject)
     {
-        $this->typoScriptObject = $typoScriptObject;
+        $this->fusionObject = $fusionObject;
     }
 }

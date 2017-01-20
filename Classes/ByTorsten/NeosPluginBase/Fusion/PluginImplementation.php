@@ -1,10 +1,10 @@
 <?php
-namespace ByTorsten\NeosPluginBase\TypoScriptObjects;
+namespace ByTorsten\NeosPluginBase\Fusion;
 
-use TYPO3\Flow\Mvc\ActionRequest;
-use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
+use Neos\Flow\Mvc\ActionRequest;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
 
-class PluginImplementation extends \TYPO3\Neos\TypoScript\PluginImplementation {
+class PluginImplementation extends \Neos\Neos\Fusion\PluginImplementation {
 
     /**
      * Build the pluginRequest object
@@ -47,7 +47,7 @@ class PluginImplementation extends \TYPO3\Neos\TypoScript\PluginImplementation {
             $pluginRequest->setControllerActionName($this->getAction());
         }
 
-        $pluginRequest->setArgument('__typoScriptObject', $this);
+        $pluginRequest->setArgument('__fusionObject', $this);
         return $pluginRequest;
     }
 

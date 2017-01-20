@@ -1,9 +1,9 @@
 {
     "description": "Plugin base",
-    "type": "typo3-flow-plugin",
+    "type": "neos-package",
     "name": "bytorsten/neospluginbase",
     "require": {
-        "typo3/neos": "^2.3"
+        "neos/neos": "*"
     },
     "autoload": {
         "psr-0": {

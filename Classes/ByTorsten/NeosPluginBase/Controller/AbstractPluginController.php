@@ -1,16 +1,16 @@
 <?php
 namespace ByTorsten\NeosPluginBase\Controller;
 
-use ByTorsten\NeosPluginBase\TypoScriptObjects\PluginImplementation;
+use ByTorsten\NeosPluginBase\Fusion\PluginImplementation;
 use ByTorsten\NeosPluginBase\View\PluginView;
-use TYPO3\Flow\Mvc\Controller\ActionController;
-use TYPO3\Flow\Mvc\RequestInterface;
-use TYPO3\Flow\Mvc\ResponseInterface;
-use TYPO3\Flow\Mvc\View\ViewInterface;
-use TYPO3\Neos\Service\LinkingService;
-use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
+use Neos\Flow\Mvc\Controller\ActionController;
+use Neos\Flow\Mvc\RequestInterface;
+use Neos\Flow\Mvc\ResponseInterface;
+use Neos\Flow\Mvc\View\ViewInterface;
+use Neos\Neos\Service\LinkingService;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 abstract class AbstractPluginController extends ActionController
 {
@@ -45,12 +45,13 @@ abstract class AbstractPluginController extends ActionController
      * @param array $contextVariables
      * @return mixed
      */
-    protected function tsValue($path, array $contextVariables = NULL)
+    protected function tsValue($path, array $contextVariables = null)
     {
-        /** @var PluginImplementation $tsObject */
-        $tsObject = $this->request->getInternalArgument('__typoScriptObject');
-        $fullPath = $tsObject->getPath() . '/' . $path;
-        $runtime = $tsObject->getTsRuntime();
+        /** @var PluginImplementation $fusionObject */
+        $fusionObject = $this->request->getInternalArgument('__fusionObject');
+
+        $fullPath = $fusionObject->getPath() . '/' . $path;
+        $runtime = $fusionObject->getTsRuntime();
 
         if ($contextVariables) {
             $contextVariables = array_merge($contextVariables,[
@@ -59,7 +60,7 @@ abstract class AbstractPluginController extends ActionController
             $runtime->pushContextArray($contextVariables);
         }
 
-        $output = $tsObject->getTsRuntime()->evaluate($fullPath, $tsObject);
+        $output = $runtime->evaluate($fullPath, $fusionObject);
 
         if ($contextVariables) {
             $runtime->popContext();
@@ -77,11 +78,11 @@ abstract class AbstractPluginController extends ActionController
 
         $view->assign('node', $this->node);
 
-        /** @var PluginImplementation $tsObject */
-        $tsObject = $this->request->getInternalArgument('__typoScriptObject');
+        /** @var PluginImplementation $fusionObject */
+        $fusionObject = $this->request->getInternalArgument('__fusionObject');
 
         if ($view instanceof PluginView) {
-            $view->setTypoScriptObject($tsObject);
+            $view->setFusionObject($fusionObject);
         }
     }
 

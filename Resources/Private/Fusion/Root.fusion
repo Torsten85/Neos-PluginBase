@@ -1,0 +1,3 @@
+prototype(ByTorsten.NeosPluginBase:Plugin) < prototype(Neos.Neos:Plugin) {
+  @class = 'ByTorsten\\NeosPluginBase\\Fusion\\PluginImplementation'
+}
