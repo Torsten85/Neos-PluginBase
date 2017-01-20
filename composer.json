@@ -6,13 +6,8 @@
         "neos/neos": "*"
     },
     "autoload": {
-        "psr-0": {
-            "ByTorsten\\NeosPluginBase": "Classes/"
-        }
-    },
-    "extra": {
-        "neos": {
-            "package-key": "ByTorsten.NeosPluginBase"
+        "psr-4": {
+            "ByTorsten\\NeosPluginBase\\": "Classes"
         }
     }
 }
