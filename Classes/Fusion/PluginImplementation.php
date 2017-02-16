@@ -4,7 +4,8 @@ namespace ByTorsten\NeosPluginBase\Fusion;
 use Neos\Flow\Mvc\ActionRequest;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
 
-class PluginImplementation extends \Neos\Neos\Fusion\PluginImplementation {
+class PluginImplementation extends \Neos\Neos\Fusion\PluginImplementation
+{
 
     /**
      * Build the pluginRequest object
@@ -14,7 +15,7 @@ class PluginImplementation extends \Neos\Neos\Fusion\PluginImplementation {
     protected function buildPluginRequest()
     {
         /** @var $parentRequest ActionRequest */
-        $parentRequest = $this->tsRuntime->getControllerContext()->getRequest();
+        $parentRequest = $this->runtime->getControllerContext()->getRequest();
         $pluginRequest = new ActionRequest($parentRequest);
         $pluginRequest->setArgumentNamespace('--' . $this->getPluginNamespace());
         $this->passArgumentsToPluginRequest($pluginRequest);
