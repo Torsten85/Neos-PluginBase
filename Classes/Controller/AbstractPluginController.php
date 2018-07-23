@@ -51,7 +51,7 @@ abstract class AbstractPluginController extends ActionController
         $fusionObject = $this->request->getInternalArgument('__fusionObject');
 
         $fullPath = $fusionObject->getPath() . '/' . $path;
-        $runtime = $fusionObject->getTsRuntime();
+        $runtime = $fusionObject->getRuntime();
 
         if ($contextVariables) {
             $contextVariables = array_merge($contextVariables,[
